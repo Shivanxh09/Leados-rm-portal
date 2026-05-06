@@ -3,6 +3,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { useAuthStore } from "../../store/authStore";
 import { Lock, Mail, ArrowRight } from "lucide-react";
+import { useNavigate } from "@tanstack/react-router"; 
 
 // Section 7: Zod Validation Schema
 const loginSchema = z.object({
@@ -14,23 +15,25 @@ type LoginForm = z.infer<typeof loginSchema>;
 
 export const Login = () => {
   const login = useAuthStore((state) => state.login);
+  const navigate = useNavigate(); // <-- Add this
 
   const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm<LoginForm>({
     resolver: zodResolver(loginSchema),
   });
 
   const onSubmit = async (data: LoginForm) => {
-    console.log("Login Attempt:", data);
     // Mock API delay
     await new Promise(resolve => setTimeout(resolve, 1000));
     
-    // Section 7: Mock successful response
     login({
       id: "user_2",
       name: "Shivansh Mishra",
       email: data.email,
       role: "rm"
     });
+
+    // <-- ADD THIS LINE to fix the "Not Found" error
+    navigate({ to: '/rm/dashboard' }); 
   };
 
   return (

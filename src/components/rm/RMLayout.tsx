@@ -1,8 +1,12 @@
 
 import { Link } from '@tanstack/react-router';
 import { LayoutDashboard, Flame, Users, Clock, Bell, MessageSquare, LogOut } from 'lucide-react';
+import { useAuthStore } from '../../store/authStore'; 
+import { useNavigate } from '@tanstack/react-router'; 
 
 export const RMLayout = ({ children, title }: { children: React.ReactNode, title: string }) => {
+    const logout = useAuthStore((state) => state.logout); 
+  const navigate = useNavigate(); 
   const menuItems = [
     { to: '/rm/dashboard', icon: <LayoutDashboard size={18}/>, label: "Dashboard" },
     { to: '/rm/hot-leads', icon: <Flame size={18}/>, label: "Hot Leads" },
@@ -35,7 +39,13 @@ export const RMLayout = ({ children, title }: { children: React.ReactNode, title
           ))}
         </nav>
         <div className="p-4 border-t border-slate-800">
-          <button className="flex items-center gap-3 px-4 py-3 w-full hover:text-white transition-colors text-sm font-bold opacity-50">
+          <button 
+            onClick={() => {
+              logout();
+              navigate({ to: '/' }); // Go back to root
+            }}
+            className="flex items-center gap-3 px-4 py-3 w-full hover:text-white transition-colors text-sm font-bold opacity-50"
+          >
             <LogOut size={18}/> Logout
           </button>
         </div>

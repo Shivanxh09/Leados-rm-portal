@@ -57,9 +57,7 @@ const routeTree = rootRoute.addChildren([
 
 const router = createRouter({ routeTree });
 
-if (import.meta.hot) {
-  import.meta.hot.dispose(() => { router.dispose(); });
-}
+
 
 declare module '@tanstack/react-router' {
   interface Register { router: typeof router; }
