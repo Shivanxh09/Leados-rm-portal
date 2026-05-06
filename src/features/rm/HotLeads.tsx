@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { rmApi } from "../../services/rmApi";
-import { Flame, MessageCircle, ChevronRight } from "lucide-react";
+import { Flame, ChevronRight } from "lucide-react";
 
 export const HotLeads = ({ onSelectLead }: { onSelectLead: (id: string) => void }) => {
   const { data } = useQuery({ queryKey: ['rm-dash'], queryFn: rmApi.getRMDashboardOverview });

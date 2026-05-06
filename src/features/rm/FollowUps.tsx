@@ -1,5 +1,5 @@
 import { MOCK_RM_DATA } from "../../mocks/rm.mock";
-import { MessageSquare, ExternalLink, CheckCircle2 } from "lucide-react";
+import {  ExternalLink, CheckCircle2 } from "lucide-react";
 
 export const FollowUps = () => {
   const followUps = MOCK_RM_DATA.followUps;

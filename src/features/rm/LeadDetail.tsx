@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { rmApi } from "../../services/rmApi";
-import { MessageSquare, CheckCircle, Clock, XCircle, ChevronRight } from "lucide-react";
+import { MessageSquare, CheckCircle, Clock } from "lucide-react";
 
 export const LeadDetail = () => {
   const { data, isLoading } = useQuery({ 
