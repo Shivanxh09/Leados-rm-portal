@@ -13,7 +13,7 @@ export const rmApi = {
   },
 
   // Section 11: Lead Detail (The most important screen)
-  getRMLeadDetail: async (id: string) => {
+  getRMLeadDetail: async (_id: string) => {
     return MOCK_RM_DATA.leadDetail;
   }
 };
